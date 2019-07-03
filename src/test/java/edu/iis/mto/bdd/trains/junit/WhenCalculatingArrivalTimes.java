@@ -1,7 +1,6 @@
 package edu.iis.mto.bdd.trains.junit;
 
 import edu.iis.mto.bdd.trains.services.IntineraryService;
-import edu.iis.mto.bdd.trains.services.IntineraryServiceImpl;
 import org.joda.time.LocalTime;
 import org.junit.Assert;
 import org.junit.Before;
@@ -18,7 +17,7 @@ public class WhenCalculatingArrivalTimes {
 
     @Before
     public void setUp() {
-        intineraryService = new IntineraryServiceImpl();
+        intineraryService = new IntineraryServiceImplDubler();
     }
 
     @Test
