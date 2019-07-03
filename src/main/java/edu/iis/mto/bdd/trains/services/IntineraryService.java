@@ -1,8 +1,10 @@
 package edu.iis.mto.bdd.trains.services;
 
-import java.time.LocalTime;
+import org.joda.time.LocalTime;
+
+import java.util.List;
 
 public interface IntineraryService {
 
-    void findNextDepartures(String departure, String destination, LocalTime startTime);
+    List<LocalTime> findNextDepartures(String departure, String destination, LocalTime startTime);
 }
