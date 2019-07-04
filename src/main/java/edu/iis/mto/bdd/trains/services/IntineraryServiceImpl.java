@@ -21,7 +21,7 @@ public class IntineraryServiceImpl implements IntineraryService {
 
         if (lines.get(0).getStations().contains(departure) && lines.get(0).getStations().contains(destination)) {
             for (LocalTime time : timetableService.findArrivalTimes(lines.get(0), destination)) {
-                if (startTime.compareTo(time) != 1 && Minutes.minutesBetween(startTime, time).getMinutes() <= 15 && Minutes.minutesBetween(startTime, time).getMinutes() > 1) {
+                if (startTime.compareTo(time) != 1 && Minutes.minutesBetween(startTime, time).getMinutes() <= 30 && Minutes.minutesBetween(startTime, time).getMinutes() > 1) {
                     times.add(time);
                 }
             }

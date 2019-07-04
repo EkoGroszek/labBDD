@@ -19,7 +19,7 @@ public class InMemoryTimetableService implements TimetableService {
 
     // All trains leave the depots at the same time.
     List<LocalTime> universalDepartureTimes = ImmutableList.of(new LocalTime(7, 58), new LocalTime(8, 0), new LocalTime(8, 2),
-                                                               new LocalTime(8, 11), new LocalTime(8, 14), new LocalTime(8, 21));
+                                                               new LocalTime(8, 11), new LocalTime(8, 14), new LocalTime(8, 21), new LocalTime(8, 31), new LocalTime(8, 36));
 
 
     @Override
