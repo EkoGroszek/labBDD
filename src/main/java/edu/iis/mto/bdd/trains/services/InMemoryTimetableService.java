@@ -1,14 +1,11 @@
 package edu.iis.mto.bdd.trains.services;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.google.common.collect.ImmutableList;
+import edu.iis.mto.bdd.trains.model.Line;
 import org.joda.time.LocalTime;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-
-import edu.iis.mto.bdd.trains.model.Line;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InMemoryTimetableService implements TimetableService {
 
@@ -21,24 +18,14 @@ public class InMemoryTimetableService implements TimetableService {
             Line.named("Epping").departingFrom("City").withStations("Central", "Strathfield", "Epping"));
 
     // All trains leave the depots at the same time.
-    List<LocalTime> universalDepartureTimes = ImmutableList.of(new LocalTime(7, 53), new LocalTime(7, 55),
-            new LocalTime(7, 57), new LocalTime(8, 6), new LocalTime(8, 9), new LocalTime(8, 16));
+    List<LocalTime> universalDepartureTimes = ImmutableList.of(new LocalTime(7, 58), new LocalTime(8, 2),
+                                                               new LocalTime(8, 11), new LocalTime(8, 14), new LocalTime(8, 21));
+
 
     @Override
     public List<LocalTime> findArrivalTimes(Line line, String targetStation) {
         Line targetLine = lineMatching(line);
-        int timeTaken = 0;
-        for (String station : targetLine.getStations()) {
-            if (station.equals(targetStation)) {
-                break;
-            }
-            timeTaken += 5;
-        }
-        List<LocalTime> arrivalTimes = Lists.newArrayList();
-        for (LocalTime time : universalDepartureTimes) {
-            arrivalTimes.add(time.plusMinutes(timeTaken));
-        }
-        return arrivalTimes;
+        return universalDepartureTimes;
     }
 
     private Line lineMatching(Line requestedLine) {
