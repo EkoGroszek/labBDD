@@ -11,7 +11,6 @@ import edu.iis.mto.bdd.trains.services.IntineraryServiceImpl;
 import edu.iis.mto.bdd.trains.services.TimetableService;
 import org.joda.time.LocalTime;
 import org.junit.Assert;
-import org.junit.Before;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +18,6 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 
 public class OptimalItinerarySteps {
-
-    private List<LocalTime> trainInfoTimes;
-
-    private TimetableService timetableService;
-
-    private IntineraryService intineraryService;
 
     private Line foundLine;
 
@@ -34,11 +27,11 @@ public class OptimalItinerarySteps {
 
     private LocalTime startTime;
 
-    @Before public void init() {
-        trainInfoTimes = new ArrayList<>();
-        timetableService = new InMemoryTimetableService();
-        intineraryService = new IntineraryServiceImpl(timetableService);
-    }
+    private List<LocalTime> trainInfoTimes = new ArrayList<>();
+
+    private TimetableService timetableService = new InMemoryTimetableService();
+
+    private IntineraryService intineraryService = new IntineraryServiceImpl(timetableService);
 
     @Zakładając("^pociągi linii \"(.*)\" z \"(.*)\" odjeżdżają ze stacji \"(.*)\" do \"(.*)\" o$")
     public void givenArrivingTrains(String line, String lineStart, String departure, String destination,
